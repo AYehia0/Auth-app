@@ -12,6 +12,19 @@ First install the packages :
     - npm i express-session
 
 
-Init The nodejs app :
 
-    - npm init -y 
+Steps : 
+
+    1- Init The nodejs app :
+
+        - npm init -y 
+    
+    2- Creating the server
+
+    3- Creating the routes using router
+
+    3- Using ejs as template 
+
+    4- Creating the views 
+
+
