@@ -13,8 +13,12 @@ const PORT = process.env.PORT || 6969
 //connecting to the database 
 mongoose.connect("mongodb://localhost:27017/users", { 
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
  })
+ 
+ //showing all the records
+ //db.users.find().pretty()
 
 //using the ejs template
 app.use(ejsLayouts);
