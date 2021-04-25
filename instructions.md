@@ -23,8 +23,12 @@ Steps :
 
     3- Creating the routes using router
 
-    3- Using ejs as template 
+    4- Using ejs as template 
 
-    4- Creating the views 
+    5- Creating the views 
+
+    6- Setup MongoDB 
+    
+    
 
 
