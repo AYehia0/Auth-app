@@ -27,8 +27,16 @@ Steps :
 
     5- Creating the views 
 
-    6- Setup MongoDB 
-    
+    6- Setup MongoDB : make sure that the mongodb is running => ```use systemctl status mongod```
+
+    7- Create the model for the user
+
+    8- Use the bodyparser
+
+    9- Handling the post reqs of the register
+
+    10- Sep the errors and render it to the html as Partials 
+
     
 
 
