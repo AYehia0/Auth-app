@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get("/" ,  (req, res) => {
-    res.send("Hello Darkness my old friend !!!")
+    res.render("home")
 });
 
 //exporting 
