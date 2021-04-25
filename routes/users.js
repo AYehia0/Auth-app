@@ -1,5 +1,6 @@
 const express = require("express");
-
+const bcrypt = require("bcryptjs");
+const User = require("../models/user");
 // Creating a router 
 const router = express.Router();
 
@@ -54,8 +55,46 @@ router.post("/register", (req, res) =>{
         });
 
     }else{
-        //passed 
-        res.send("passed")
+
+        User.findOne({
+            email:email
+        }).then(user => {
+
+            if(user) {
+                //user exists 
+                errs.push({errorMsg: "User exists"});
+                //re-render the register page
+                res.render("register", {
+                    // given back the fields so since rendering the html removes the writen form
+                    errs,
+                    name,
+                    email,
+                    password1,
+                    password2
+                });   
+            }else{
+                //creating the instance ,, must be saved 
+                const newUser = new User({
+                    username: name,
+                    email: email,
+                    password: password1
+                })
+                    //hashing the password 
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(newUser.password, salt, (err, hash)=> {
+                            if (err) throw err;
+                            newUser.password = hash;
+                            
+                            //saving the user
+                            newUser.save().then(user => {
+                                res.redirect("/users/login");
+                            }).catch(error => {
+                                console.log(error);
+                            })
+                        })
+                    });
+            }
+        })
     }
 });
 
