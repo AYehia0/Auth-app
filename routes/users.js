@@ -99,6 +99,16 @@ router.post("/register", (req, res) =>{
     }
 });
 
+//handling the login using passport 
+const passport = require("passport");
+
+router.post("/login", (req, res, next) => {
+    passport.authenticate("local", {
+        successRedirect: "/dashboard", 
+        failureRedirect: "/users/login",
+        failureFlash: true
+    })(req, res, next)
+})
 //exporting 
 module.exports = router;
 
