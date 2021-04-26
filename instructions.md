@@ -37,6 +37,9 @@ Steps :
 
     10- Sep the errors and render it to the html as Partials 
 
+    11- Using flash messages to display messages after redirect 
+    
+
     
 
 
