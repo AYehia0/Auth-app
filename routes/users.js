@@ -87,6 +87,7 @@ router.post("/register", (req, res) =>{
                             
                             //saving the user
                             newUser.save().then(user => {
+                                req.flash("success_msg", "You can now regitered, you can login now.") // now add it to the message template
                                 res.redirect("/users/login");
                             }).catch(error => {
                                 console.log(error);
