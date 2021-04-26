@@ -41,7 +41,11 @@ Steps :
     
     12- Handling the Login route
 
-    
+    13- the dashboard page 
+
+    14- logout
+
+    15- protecting the dashboard page
     
 
 
