@@ -3,6 +3,11 @@ const ejsLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser')
 
+
+//flash messages 
+const flash = require("connect-flash");
+const session = require("express-session");
+
 const indexRoutes = require("./routes/index");
 const userRoutes = require("./routes/users");
 const app = express();
@@ -27,6 +32,25 @@ app.set("view engine", "ejs");
 
 //using the body parser
 app.use(bodyParser.urlencoded({ extended: false }))
+
+//express session , check out the documectations 
+app.use(session({
+    secret:"TOPSECRET696969",
+    resave: true, // what are those ?
+    saveUninitialized: true
+}))
+
+//connect flash 
+app.use(flash());
+
+
+// some global var for flash messages 
+// call the flash message on redirect 
+app.use((req,res,next) => {
+    res.locals.success_msg = req.flash("success_msg");
+    res.locals.error_msg = req.flash("error_msg");
+    next();
+})
 
 //routes 
 app.use("/", indexRoutes);
